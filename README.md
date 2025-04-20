@@ -12,7 +12,7 @@ No se requiere instalación. Simplemente clona el repositorio y abre el archivo 
 
 ```bash
 # Clonar el repositorio
-git clone <URL del repositorio>
+git clone "https://github.com/CodeByLauty/TypingGame"
 ```
 
 Te invito a que lo instales y juegues!
