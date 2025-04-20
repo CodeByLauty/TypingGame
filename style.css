@@ -1,0 +1,250 @@
+:root {
+    --bg-color-0: #ede0d4;
+    --font-color-1: #7F5539;
+    --font-color-2: #6e0d25;
+    --secundary-color-0: #DDB892;
+
+    --incorrect-color: #ff4b3e;
+    --correct-color: #6bad28;
+}
+
+body {
+    overflow: hidden;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: var(--bg-color-0);
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 120px 1fr;
+}
+
+header {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 5px 40px;
+    background-color: var(--secundary-color-0);
+    border: 1px solid var(--font-color-2);
+}
+
+header a {
+    text-decoration: none;
+    transition: ease .5s;
+}
+
+header a:hover {
+    text-decoration: underline;
+    scale: 1.1;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 60px;
+    color: var(--font-color-1);
+}
+
+.text {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--font-color-1);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.icon {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--font-color-2);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 1fr 180px;
+    place-items: center;
+}
+
+.game {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    position: relative;
+}
+
+.word {
+    display: flex;
+    font-size: 28px;
+    color: var(--font-color-2);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.letter {
+    position: relative;
+}
+
+@keyframes blinck {
+    from {
+        opacity: .8
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.letter.active::after {
+    content: "|";
+    color: var(--font-color-2);
+    position: absolute;
+    left: -8px;
+    animation: blinck 1s ease-in .1s infinite;
+}
+
+.letter.before-active::after {
+    content: "|";
+    color: var(--font-color-2);
+    position: absolute;
+    left: 8px;
+    animation: blinck 1s linear .1s infinite;
+}
+
+.correct {
+    color: var(--correct-color);
+}
+
+.incorrect {
+    color: var(--incorrect-color);
+}
+
+.typed-wrong {
+    text-decoration-line: underline;
+    text-decoration-color: var(--incorrect-color);
+    text-decoration-thickness: .1px;
+}
+
+#game-input {
+    opacity: 0;
+    width: 0;
+    position: absolute;
+    cursor: default;
+}
+
+.options {
+    width: 400px;
+    align-self: start;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--secundary-color-0);
+    border: 1px solid var(--font-color-2);
+}
+
+.amount-of-words {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.amount-of-words {
+    border-right: 2px solid var(--font-color-2);
+    padding-right: 30px;
+}
+
+.button {
+    border: none;
+    background-color: inherit;
+    transition: .1s ease;
+}
+
+.button:not(.active):hover {
+    scale: 1.2;
+    cursor: pointer;
+    color: var(--font-color-2);
+}
+
+.amount-of-words .active {
+    scale: 1.2;
+    color: var(--font-color-2);
+}
+
+.not-in-game *:not(.press-key-to-focus) {
+    filter: blur(5px);
+}
+
+.press-key-to-focus {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+}
+
+.count {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(0, 20px);
+}
+
+.results {
+    width: 800px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: stretch;
+}
+
+.results .icon {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--font-color-1);
+}
+
+.results .text {
+    color: var(--secundary-color-0); 
+}
+
+.wpm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.accuracy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.characters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 16px;
+    grid-template-areas: 
+    "a a"
+    "b b"
+    "c d";
+    place-items: center;
+    text-align: center;
+}
+
+.total-characters {
+    grid-area: a;
+}
+
+.extra-characters {
+    grid-area: b
+}
+
+.correct-characters {
+    grid-area: c;
+}
+
+.incorrect-characters {
+    grid-area: d;
+}
